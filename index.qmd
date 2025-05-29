@@ -1,5 +1,7 @@
 ---
-title: "werickson13.github.io"
+title: "Wyatt Erickson"
+about:
+  template: solana
 ---
 
 This is a Quarto website.
