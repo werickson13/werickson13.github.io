@@ -6,6 +6,8 @@ about:
   - icon: github
     text: Github
     href: https://github.com/werickson13
+  - text: Email
+    href: mailto:wyatterickson@ucsb.edu
 ---
 
 This is a Quarto website.
