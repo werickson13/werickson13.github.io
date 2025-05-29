@@ -2,9 +2,10 @@
 title: "Wyatt Erickson"
 about:
   template: solana
-- icon: github
-text: Github
-href: https://github.com/werickson13
+  links:
+  - icon: github
+    text: Github
+    href: https://github.com/werickson13
 ---
 
 This is a Quarto website.
