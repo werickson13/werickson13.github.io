@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+
+  // Colors
+  $cream: #FDFBF7;
+  $dark-olive-green: #556b2f;
+  $light-olive-green: #9acd32;
+  $warm-cream: #f5f0e6;
+  $forest-green: #0b3d2e;
+  $rust: #b74103;
+  
+  // Base document colors
+  $body-bg: $cream; // page background
+  $navbar-bg: $dark-olive-green; // navbar
+  $navbar-fg: $warm-cream; // navbar foreground elements
+  $navbar-hl: $rust; // highlight color when hovering over navbar links
+  
