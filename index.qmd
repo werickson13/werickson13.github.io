@@ -1,13 +1,23 @@
 ---
 title: "Wyatt Erickson"
+image: photos/self_photo.jpg
 about:
-  template: solana
+  template: jolla
+  image-shape: round
+  image-width: 20em
   links:
   - icon: github
     text: Github
     href: https://github.com/werickson13
   - text: Email
     href: mailto:wyatterickson@ucsb.edu
+toc: false
 ---
 
+### About Me
+I'm a third year Hydrologic Sciences and Policy major at the University of California, Santa Barbara. I am the current president of the Hydrology club at UCSB, and work as a student lead at the Associated Students Food Bank. I will also be interning for the Santa Clara Valley Water District as a Hydrographer in the Hydrology, Hydraulics, and Geomorphology unit.
 
+
+Through my UCSB courses I have experience in hydrologic, geologic, and pedologic field work. I also have experience with related software programs, including but not limited to: QGIS, RStudio, Excel, and Adobe Illustrator.
+
+I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. 
