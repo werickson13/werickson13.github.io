@@ -8,8 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - freeforall.qmd
       - project.qmd
+      - freeforall.qmd
       - resume.qmd
     right: 
       - icon: github
