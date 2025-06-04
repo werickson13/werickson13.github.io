@@ -1,5 +1,49 @@
 ---
-title: "Free for All Page (TBD)"
-format: html
+title: "Fieldwork"
+format: 
+  html:
+    echo: false
+    warning: false
+    message: false
+    error: false
 ---
 
+```{r}
+library(tidyverse)
+library(plotly)
+library(leaflet)
+library(leaflet.extras)
+library(here)
+
+# read in data
+locations <- read_csv(file = here::here("map_data", "locations.csv"))
+
+# cleaning and filtering
+sites <- locations |> 
+  select(site_name, lat, long) |> 
+  distinct()
+
+# create icon
+hammer_icon <- makeIcon(
+  iconUrl = here::here("photos", "hammer_icon.png"),
+  iconWidth = 50, iconHeight = 50
+)
+# initialize map ----
+site_map <- leaflet() |> 
+  
+  # add base map tiles ----
+  addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World Imagery") |> 
+  
+  # set view over Mojave National Preserve ----
+  setView(lng = -115.43, lat = 35.12, zoom = 9) |> 
+
+  # add markers ----
+  addMarkers(data = sites,
+             icon = hammer_icon,
+             lng = ~long, lat = ~lat,
+             popup = paste("Site Name:", sites$site_name, "<br>",
+                           "Coordinates (lat/long):", sites$lat, ",", sites$long))
+
+# print map----
+site_map
+```
