@@ -58,11 +58,9 @@ site_map
 
 ### Kelbaker Road
 
-This site was during my first ever trip to the Mojave. We were studying the soils along the alluvial fan located next to Kelbaker Road. We dug and analyzed three soil pits. This was my first time seeing a vesticular soil horizon, as well as a petrocalcic horizon. :::{layout="horizontal"} ![](photos/IMG_5331.jpeg){width="150"} ![](photos/IMG_6176.jpeg){width="\"150"} :::
-
-::: {layout="horizontal"}
-![](photos/IMG_5331.jpeg){width="150"} ![](photos/IMG_6176.jpeg){width="150"}
-:::
+This site was during my first ever trip to the Mojave. We were studying the soils along the alluvial fan located next to Kelbaker Road. We dug and analyzed three soil pits. This was my first time seeing a vesticular soil horizon, as well as a petrocalcic horizon.<br>
+![Kelbaker 1](photos/IMG_5331.jpeg){height=250}
+![Kelbaker 2](photos/IMG_6176.jpeg){height=250}
 
 ### Norris Camp
 
