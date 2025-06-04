@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+
+// Colors
+$warm-cream: #f2e5c9;
+$dark-olive-green: #556b2f;
+$rust: #b7410e;
+
+// Base document colors
+$body-bg: $warm-cream;                // page background
+$navbar-bg: $dark-olive-green;  // navbar
+$navbar-fg: $warm-cream;              // navbar foreground elements
+$navbar-hl: $rust; // highlight color when hovering over navbar links
+
+// Font
+$font-family-base: Georgia, serif;
