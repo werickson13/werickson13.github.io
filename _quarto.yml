@@ -21,7 +21,7 @@ format:
   html:
     theme: 
       - sandstone
-      - styles.scss #removed styles.css, using scss instead
+      - docs/styles.scss #removed styles.css, using scss instead
     toc: true
     page-layout: full
 
