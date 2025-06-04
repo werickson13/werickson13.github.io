@@ -8,16 +8,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - aboutme.qmd
       - freeforall.qmd
       - project.qmd
       - resume.qmd
+    right: 
+      - icon: github
+        href: https://github.com/werickson13
+      - icon: envelope
+        href: mailto:wyatterickson@ucsb.edu
 
 format:
   html:
-    theme: sandstone
-    css: styles.css
+    theme: 
+      - sandstone
+      - styles.scss #removed styles.css, using scss instead
     toc: true
     page-layout: full
 
