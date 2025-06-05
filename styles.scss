@@ -13,3 +13,15 @@ $navbar-hl: $rust; // highlight color when hovering over navbar links
 
 // Font
 $font-family-base: Georgia, serif;
+
+//resume button
+ .resume-button {
+  background-color: $dark-olive-green;
+  color: $warm-cream;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
