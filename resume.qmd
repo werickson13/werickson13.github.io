@@ -3,13 +3,11 @@ title: "Résumé"
 format:
   html:
     toc: false
-    title-block: false
 ---
 
+::: {style="display: flex; justify-content: space-between; align-items: center;"}
+<a href="photos/Wyatt_Erickson_Resume-3.pdf" target="_blank" class="resume-button">
+View PDF</a>
+:::
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-<a href="photos/Wyatt_Erickson_Resume-3.pdf" target="_blank" class="resume-button"> View PDF</a>
-
-</div>
-
-![](photos/resume.png){width=700}
+![](photos/resume.png){width="1000"}

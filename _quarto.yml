@@ -8,15 +8,23 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - aboutme.qmd
-      - project.qmd
-      - fieldwork.qmd
-      - resume.qmd
+      - href: aboutme.qmd
+        text: About Me
+      - href: project.qmd
+        text: Project
+      - href: fieldwork.qmd
+        text: Mojave Fieldwork
+      - href: resume.qmd
+        text: Résumé
     right: 
       - icon: github
         href: https://github.com/werickson13
       - icon: envelope
         href: mailto:wyatterickson@ucsb.edu
+  page-footer: 
+    background: light
+    left: "Wyatt Erickson <br> Last Updated: June 2025"
+    right: "Built with [Quarto](https://quarto.org/){target=_blank}"
 
 format:
   html:
@@ -25,6 +33,7 @@ format:
       - styles.scss
     toc: true
     page-layout: full
+    
 
 editor: visual
 

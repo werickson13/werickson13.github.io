@@ -10,12 +10,17 @@ $body-bg: $warm-cream;                // page background
 $navbar-bg: $dark-olive-green;  // navbar
 $navbar-fg: $warm-cream;              // navbar foreground elements
 $navbar-hl: $rust; // highlight color when hovering over navbar links
+$footer-bg: $dark-olive-green;  // footer background
+$footer-fg: $warm-cream;  // footer foreground
+$link-color: $rust;  // hyperlinks
 
 // Font
 $font-family-base: Georgia, serif;
 
-//resume button
- .resume-button {
+/*-- scss:rules --*/
+
+// resume button
+ .resume-button {                //button to link to resume pdf
   background-color: $dark-olive-green;
   color: $warm-cream;
   padding: 8px 16px;
