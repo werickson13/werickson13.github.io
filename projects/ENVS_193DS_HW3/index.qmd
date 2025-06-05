@@ -76,7 +76,7 @@ ggplot(data_c, aes(x = week_day, y = water_total, color = week_day)) + #create j
 
 #### c. Caption
 
-Figure 1: Figure shows mean water usage (gallons) for each day of the week. Mean values represented with dark red points, standard error represented by black error bars. Monday values shown with blue circles, Tuesday with dark green, Wednesday with purple, Friday with orange, Saturday with cyan, and Sunday with light red. Data shows higher mean water usage on Saturday and Sunday, with the highest mean on Sunday. Outliers were not excluded from data.
+Figure 1: Figure shows mean water usage (gallons) for each day of the week. Mean values represented with dark red points, standard error represented by black error bars. Monday values shown with blue circles, Tuesday with dark green, Wednesday with purple, Friday with orange, Saturday with cyan, and Sunday with light red. Data shows higher mean water usage on Saturday and Sunday, with the highest mean on Sunday. In this figure, outliers were not excluded from the data.
 
 #### d. Table Presentation
 
