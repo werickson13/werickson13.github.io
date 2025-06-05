@@ -12,4 +12,4 @@ toc: false
 
 This map was created for a report on the Kootenai River basin. There is an ongoing issue with selenium and nitrate contamination in the water due to upstream coal mining. These coal mines leech these pollutants from large piles of waste rock. The elevated levels of selenium have had a detrimental impact on the trout population in the upper Kootenai basin, with many hatching with extreme deformities or simply not being able to develop. The map here showcases the flow of this river basin, as well as the extent of these mining operations.
 
-![](river_image.jpeg){width=800}
+![](river_image.jpeg){width="800"}
