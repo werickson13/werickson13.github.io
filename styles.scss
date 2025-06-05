@@ -4,6 +4,7 @@
 $warm-cream: #f2e5c9;
 $dark-olive-green: #556b2f;
 $rust: #b7410e;
+$pastel-green: #a8b97c;
 
 // Base document colors
 $body-bg: $warm-cream;                // page background
@@ -29,4 +30,17 @@ $font-family-base: Georgia, serif;
   font-weight: bold;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
+}
+
+// blocks
+.green-block { // backround block with color
+  background-color: $pastel-green;
+  padding-block: 1.3rem; // colored portion block: top/bottom boundaries
+  padding-inline: 2rem; // side padding
+  margin-bottom: 2rem; // background portion
+}
+#green-block-text {
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important; // line spacing 
+
 }

@@ -1,10 +1,45 @@
 [
   {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Projects",
+    "section": "",
+    "text": "On this page, I have added some projects and assignments that I have worked on during my time at UCSB. The posts on this page highlight my work with various software, including RStudio and QGIS.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nENVS-193DS Homework 3\n\n\nHomework assignment displaying statistical analysis using RStudio.\n\n\n\n\n\n\nMay 28, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMining Sites in the Kotenai River Basin\n\n\nA map created with QGIS to analyze selenium pollution.\n\n\n\n\n\n\nJun 1, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Wyatt Erickson",
     "section": "",
     "text": "I’m a third year Hydrologic Sciences and Policy major at the University of California, Santa Barbara. I am the current president of the Hydrology club at UCSB, and work as a student lead at the Associated Students Food Bank. I will also be interning for the Santa Clara Valley Water District as a Hydrographer in the Hydrology, Hydraulics, and Geomorphology unit.\nThrough my UCSB courses I have experience in hydrologic, geologic, and pedologic field work. I also have experience with related software programs, including but not limited to: QGIS, RStudio, Excel, and Adobe Illustrator."
+  },
+  {
+    "objectID": "projects/ENVS_193DS_HW3/index.html",
+    "href": "projects/ENVS_193DS_HW3/index.html",
+    "title": "ENVS-193DS Homework 3",
+    "section": "",
+    "text": "https://github.com/werickson13/ENVS193DS_Hw_03.git"
+  },
+  {
+    "objectID": "projects/ENVS_193DS_HW3/index.html#problem-1.-personal-data",
+    "href": "projects/ENVS_193DS_HW3/index.html#problem-1.-personal-data",
+    "title": "ENVS-193DS Homework 3",
+    "section": "Problem 1. Personal Data",
+    "text": "Problem 1. Personal Data\n\na. Data Summarizing\n\nI can calculate the mean water usage on each day of the week, and compare those means to one another because I think I may use more water on certain days. Over the weekend I have more free time, so I think I will use more water (for example, taking longer showers, doing more laundry, etc.) on Saturday than other days of the week.\n\n\n\nb. Visualization\n\ndata_c &lt;- water_data |&gt; #use water dataframe\n  clean_names() |&gt;  #clean up column names\n  mutate(week_day = recode(week_day,#rename values in week_day column\n                           \"monday\" = \"Monday\",\n                           \"tuesday\" = \"Tuesday\",\n                           \"wednesday\" = \"Wednesday\",\n                           \"thursday\" = \"Thursday\",\n                           \"friday\" = \"Friday\",\n                           \"saturday\" = \"Saturday\",\n                           \"sunday\" = \"Sunday\")) |&gt; \n  select(week_day,water_total)#view only day and total water columns\nprint(data_c) #display selected columns from dataframe\n\n    week_day water_total\n1  Wednesday    32.79375\n2   Thursday    40.79125\n3     Friday    39.70031\n4   Saturday    65.89375\n5     Sunday    49.37000\n6     Monday    35.05125\n7    Tuesday    24.64125\n8  Wednesday    63.96875\n9   Thursday    36.86750\n10    Friday    48.50000\n11  Saturday    38.75625\n12    Sunday    61.15500\n13    Monday    35.59375\n14   Tuesday    44.64000\n15 Wednesday    32.53250\n16  Thursday    32.92875\n17    Friday    40.68375\n18  Saturday    81.57750\n19    Sunday    34.32500\n20    Monday    36.56625\n21   Tuesday    34.11750\n22 Wednesday    26.44031\n23  Thursday    49.74125\n24    Friday    27.83750\n25  Saturday    37.99500\n26    Sunday    95.38125\n27    Monday    29.94750\n28   Tuesday    35.91875\n29 Wednesday    59.29375\n30  Thursday    26.60875\n\ndata_c$week_day &lt;- factor(data_c$week_day, #rearrange cagegories to display as Monday - Sunday\n                             levels = c(\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"))\nggplot(data_c, aes(x = week_day, y = water_total, color = week_day)) + #create jitterplot using water total and week day\n  geom_jitter(width = 0.1, shape = 16, size = 2, alpha = 0.5)+ #set parameters for plot\n    stat_summary(fun.data = mean_se, geom = \"errorbar\", width = 0.05, color = \"black\") + #create error bar\n  stat_summary(fun = mean, geom = \"point\", shape = 18, size = 4, color = \"darkred\")+ #create mean point\n  theme_dark(base_size = 14) + #set theme\n  theme(\n    panel.background = element_rect(fill = \"white\", color = NA), #set panel background color\n    plot.background = element_rect(fill = \"gray\", color = NA), #set plot background color\n    legend.position = \"none\" #remove legend\n  ) + \n  scale_color_manual(values = c(\"Monday\" = \"blue\", \"Tuesday\" = \"darkgreen\", \"Wednesday\" = \"purple\", \"Thursday\" = \"darkorange\", \"Friday\" = \"cyan\", \"Saturday\" = \"green\", \"Sunday\" = \"brown1\")) + #set point color\n  labs(\n    title = \"Mean Water Usage Across Days of the Week\", #set title\n    subtitle = \"Wyatt Erickson\", #set subtitle\n    x = \"Day of the Week\", #set x axis title\n    y = \"Water Usage (gallons)\" #set y axis title\n  )\n\n\n\n\n\n\n\n\n\n\nc. Caption\nFigure 1: Figure shows mean water usage (gallons) for each day of the week. Mean values represented with dark red points, standard error represented by black error bars. Monday values shown with blue circles, Tuesday with dark green, Wednesday with purple, Friday with orange, Saturday with cyan, and Sunday with light red. Data shows higher mean water usage on Saturday and Sunday, with the highest mean on Sunday. Outliers were not excluded from data.\n\n\nd. Table Presentation\n\ndata_summary &lt;- data_c |&gt; #use cleaned dataframe\n  group_by(week_day) |&gt; #calculate based on week day\n  summarize(mean = mean(water_total)) |&gt; #calculate mean\n  mutate(across(where(is.numeric), ~round(.x, 1))) #round values to one decimal place\n\ndata_summary |&gt; #use summarized dataframe\n  gt() |&gt; #use gt package\n  cols_label( #set column names\n    week_day = \"Weekday\",\n    mean = \"Mean (Gallons)\", \n  ) |&gt; \n  tab_header( #add table title\n    title = \"Mean Water Usage Summary\"\n  ) |&gt; \n  tab_style( #make column labels bold\n    style = cell_text(weight = \"bold\"),\n    locations = cells_column_labels(columns = everything())\n  )\n\n\n\n\n\n\n\nMean Water Usage Summary\n\n\nWeekday\nMean (Gallons)\n\n\n\n\nMonday\n34.3\n\n\nTuesday\n34.8\n\n\nWednesday\n43.0\n\n\nThursday\n37.4\n\n\nFriday\n39.2\n\n\nSaturday\n56.1\n\n\nSunday\n60.1"
+  },
+  {
+    "objectID": "projects/ENVS_193DS_HW3/index.html#problem-2.-affective-visualization",
+    "href": "projects/ENVS_193DS_HW3/index.html#problem-2.-affective-visualization",
+    "title": "ENVS-193DS Homework 3",
+    "section": "Problem 2. Affective Visualization",
+    "text": "Problem 2. Affective Visualization\n\na. Affective Visualization Description\n\nOne idea I have to visualize my data is to display the line created by a scatterplot with date as the x-axis and water usage as the y-axis. I could draw lines up to each point, and divide these lines between at-home water usage and away from home water usage, which I collected in my original excel sheet. This display would show day-to day variation in water usage. I could also assign colors or different saturations of a single color to each day of the week.\n\n\n\nb. Create a Sketch\n\n\n\nc. Visualization Draft\n\n\n\nd. Artist Statement\nIn the above visualization, the relationship between daily water usage is shown through an image created in adobe illustrator and inspired by Lorraine Woodruff-Long’s warming strips quilt. I plotted the data points for water usage by day as a scatterplot, and drew lines up to each point, curving the edges for days where there was only at-home water usage and assigning each day of the week a color pattern."
+  },
+  {
+    "objectID": "projects/ENVS_193DS_HW3/index.html#problem-3.-statistical-critique",
+    "href": "projects/ENVS_193DS_HW3/index.html#problem-3.-statistical-critique",
+    "title": "ENVS-193DS Homework 3",
+    "section": "Problem 3. Statistical Critique",
+    "text": "Problem 3. Statistical Critique\n\na. Revisit and Summarize\nThe authors are using an ANOVA test to analyze differences in gravel sphericity and roundness between different terraces and locations. In terraces with a statistically significant difference from one another, they are represented with an r, meaning that the null hypothesis for that specific relationship is rejected. This analysis of variance compares mean grain size values throughout the river, and determines if the difference in these means is due to chance, or truly dependent on how upstream or downstream each grain is.\n\n\n\nb. Visual Clarity\nThe table does a good job representing and conveying the results of the ANOVA test, and showing what values are and are not statistically significant. The key at the bottom efficiently elaborates key details of this description.\n\n\nc. Aesthetic Clarity\nThere is not much “visual clutter” present in this table. The data is concise, with a key at the bottom and values that show only the results with no other full sentence explanations. The inclusion of an r indicating a rejected null hypothesis is a concise indicator of the interpretation of these results, without needing a separate table.\n\n\nd. Recommendations\nOne thing I might add to this table is a grid separating values. With eight rows and six columns of numbers present, it can seem a bit jumbled, and a grid with a low line weight could help the readability. Also, the Y and R metrics could be added to the key at the bottom of the table. While it is mentioned further up in the text that these represent sphericity and roundness, it would be a good idea for clarity to re-emphasize what these variables represent, as they did with “T = terrace”."
   },
   {
     "objectID": "resume.html",
@@ -21,18 +56,25 @@
     "text": "Fieldwork Sites\nThis map shows the locations in the Mojave Desert I’ve done field work at. Listed below is more information about each site.\n\n\n\n\n\n\n\n\nKelbaker Road\nThis site was during my first ever trip to the Mojave. We were studying the soils along the alluvial fan located next to Kelbaker Road. We dug and analyzed three soil pits. This was my first time seeing a vesticular soil horizon, as well as a petrocalcic horizon.  \n\n\nNorris Camp\nNorris Camp is a UC research station where we were allowed to camp. At this site I was able to practice analyzing and describing granite, aplite, and mafic enclaves.  \n\n\nPiute Gorge\nAt Piute Gorge, I was able to map and describe extensional faulting in the area. I took detailed notes on rock units throughout the gorge, as well as contacts and implied geologic history.   \n\n\nPisgah Crater\nMy class and I analyzed mineralogy to identify three separate lava flows at Pisgah Crater. Using this data, as well as other field observations, we were able to deduce the order of these flows.  \n\n\nPinto Mountain\nWhile hiking up Pinto Mountain, I was able to analyze and describe the different cooling and eruptive units that make up the mountain.   \n\n\nRock Spring\nI worked with my class to analyze the relationships between different intermediate and felsic rocks in order to deduce geologic history. A notable find on this excursion were sizable formations and cross-cuts of epidote."
   },
   {
+    "objectID": "projects/kootenai_map/index.html",
+    "href": "projects/kootenai_map/index.html",
+    "title": "Mining Sites in the Kotenai River Basin",
+    "section": "",
+    "text": "Purpose\nThis map was created for a report on the Kootenai River basin. There is an ongoing issue with selenium and nitrate contamination in the water due to upstream coal mining. These coal mines leech these pollutants from large piles of waste rock. The elevated levels of selenium have had a detrimental impact on the trout population in the upper Kootenai basin, with many hatching with extreme deformities or simply not being able to develop. The map here showcases the flow of this river basin, as well as the extent of these mining operations."
+  },
+  {
     "objectID": "aboutme.html",
     "href": "aboutme.html",
     "title": "About Me",
     "section": "",
-    "text": "I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. Pictured here is my wildflower garden that I planted in my front yard in Isla Vista."
+    "text": "I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. Pictured here is the wildflower garden that I planted in my front yard in Isla Vista."
   },
   {
     "objectID": "aboutme.html#hobbies",
     "href": "aboutme.html#hobbies",
     "title": "About Me",
     "section": "",
-    "text": "I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. Pictured here is my wildflower garden that I planted in my front yard in Isla Vista."
+    "text": "I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. Pictured here is the wildflower garden that I planted in my front yard in Isla Vista."
   },
   {
     "objectID": "aboutme.html#cookingbaking",

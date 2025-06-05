@@ -1,5 +1,13 @@
 ---
 title: "Projects"
-format: html
+listing: 
+  contents: "projects"
+  type: grid
+  categories: false
+toc: false
 ---
 
+::: {.green-block}
+<p id="green-block-text">
+On this page, I have added some projects and assignments that I have worked on during my time at UCSB. The posts on this page highlight my work with various software, including RStudio and QGIS. </p>
+:::

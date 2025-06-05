@@ -1,0 +1,142 @@
+---
+title: "ENVS-193 DS Homework 3"
+description: Homework assignment displaying statistical analysis using RStudio.
+date: 05/28/2025
+image: hw3_ss.png
+format: 
+  html: 
+    toc: true
+    execute:
+message: false
+editor: visual
+warning: false
+error: false
+---
+
+### Github Repo
+
+<https://github.com/werickson13/ENVS193DS_Hw_03.git>
+
+### Loading Packages
+
+The following code loads in the packages and data that will be used throughout the assignment.
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse) #load packages
+library(gt)
+library(here)
+library(janitor)
+library(knitr)
+water_data <- read.csv("~/Git_/werickson13.github.io/projects/ENVS_193DS_HW3/Data/ENVS193_data.csv") #load in data
+```
+
+## Problem 1. Personal Data
+
+#### a. Data Summarizing
+
+-   I can calculate the mean water usage on each day of the week, and compare those means to one another because I think I may use more water on certain days. Over the weekend I have more free time, so I think I will use more water (for example, taking longer showers, doing more laundry, etc.) on Saturday than other days of the week.
+
+#### b. Visualization
+
+This code creates a chart displaying the data I collected on daily water usage.
+
+```{r}
+data_c <- water_data |> #use water dataframe
+  clean_names() |>  #clean up column names
+  mutate(week_day = recode(week_day,#rename values in week_day column
+                           "monday" = "Monday",
+                           "tuesday" = "Tuesday",
+                           "wednesday" = "Wednesday",
+                           "thursday" = "Thursday",
+                           "friday" = "Friday",
+                           "saturday" = "Saturday",
+                           "sunday" = "Sunday")) |> 
+  select(week_day,water_total)#view only day and total water columns
+print(data_c) #display selected columns from dataframe
+data_c$week_day <- factor(data_c$week_day, #rearrange cagegories to display as Monday - Sunday
+                             levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+ggplot(data_c, aes(x = week_day, y = water_total, color = week_day)) + #create jitterplot using water total and week day
+  geom_jitter(width = 0.1, shape = 16, size = 2, alpha = 0.5)+ #set parameters for plot
+    stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.05, color = "black") + #create error bar
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 4, color = "darkred")+ #create mean point
+  theme_dark(base_size = 14) + #set theme
+  theme(
+    panel.background = element_rect(fill = "white", color = NA), #set panel background color
+    plot.background = element_rect(fill = "gray", color = NA), #set plot background color
+    legend.position = "none" #remove legend
+  ) + 
+  scale_color_manual(values = c("Monday" = "blue", "Tuesday" = "darkgreen", "Wednesday" = "purple", "Thursday" = "darkorange", "Friday" = "cyan", "Saturday" = "green", "Sunday" = "brown1")) + #set point color
+  labs(
+    title = "Mean Water Usage Across Days of the Week", #set title
+    subtitle = "Wyatt Erickson", #set subtitle
+    x = "Day of the Week", #set x axis title
+    y = "Water Usage (gallons)" #set y axis title
+  )
+```
+
+#### c. Caption
+
+Figure 1: Figure shows mean water usage (gallons) for each day of the week. Mean values represented with dark red points, standard error represented by black error bars. Monday values shown with blue circles, Tuesday with dark green, Wednesday with purple, Friday with orange, Saturday with cyan, and Sunday with light red. Data shows higher mean water usage on Saturday and Sunday, with the highest mean on Sunday. Outliers were not excluded from data.
+
+#### d. Table Presentation
+
+This creates a table summary for mean water usage.
+
+```{r}
+data_summary <- data_c |> #use cleaned dataframe
+  group_by(week_day) |> #calculate based on week day
+  summarize(mean = mean(water_total)) |> #calculate mean
+  mutate(across(where(is.numeric), ~round(.x, 1))) #round values to one decimal place
+
+data_summary |> #use summarized dataframe
+  gt() |> #use gt package
+  cols_label( #set column names
+    week_day = "Weekday",
+    mean = "Mean (Gallons)", 
+  ) |> 
+  tab_header( #add table title
+    title = "Mean Water Usage Summary"
+  ) |> 
+  tab_style( #make column labels bold
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  )
+```
+
+## Problem 2. Affective Visualization
+
+#### a. Affective Visualization Description
+
+-   One idea I have to visualize my data is to display the line created by a scatterplot with date as the x-axis and water usage as the y-axis. I could draw lines up to each point, and divide these lines between at-home water usage and away from home water usage, which I collected in my original excel sheet. This display would show day-to day variation in water usage. I could also assign colors or different saturations of a single color to each day of the week.
+
+#### b. Create a Sketch
+
+![](Data/sketch.png)
+
+#### c. Visualization Draft
+
+![](Data/data_visualization.png)
+
+#### d. Artist Statement
+
+In the above visualization, the relationship between daily water usage is shown through an image created in adobe illustrator and inspired by Lorraine Woodruff-Long's warming strips quilt. I plotted the data points for water usage by day as a scatterplot, and drew lines up to each point, curving the edges for days where there was only at-home water usage and assigning each day of the week a color pattern.
+
+## Problem 3. Statistical Critique
+
+#### a. Revisit and Summarize
+
+The authors are using an ANOVA test to analyze differences in gravel sphericity and roundness between different terraces and locations. In terraces with a statistically significant difference from one another, they are represented with an r, meaning that the null hypothesis for that specific relationship is rejected. This analysis of variance compares mean grain size values throughout the river, and determines if the difference in these means is due to chance, or truly dependent on how upstream or downstream each grain is.
+
+![](Data/table.png)
+
+#### b. Visual Clarity
+
+The table does a good job representing and conveying the results of the ANOVA test, and showing what values are and are not statistically significant. The key at the bottom efficiently elaborates key details of this description.
+
+#### c. Aesthetic Clarity
+
+There is not much "visual clutter" present in this table. The data is concise, with a key at the bottom and values that show only the results with no other full sentence explanations. The inclusion of an r indicating a rejected null hypothesis is a concise indicator of the interpretation of these results, without needing a separate table.
+
+#### d. Recommendations
+
+One thing I might add to this table is a grid separating values. With eight rows and six columns of numbers present, it can seem a bit jumbled, and a grid with a low line weight could help the readability. Also, the Y and R metrics could be added to the key at the bottom of the table. While it is mentioned further up in the text that these represent sphericity and roundness, it would be a good idea for clarity to re-emphasize what these variables represent, as they did with "T = terrace".
