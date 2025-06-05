@@ -1,4 +1,20 @@
 ---
 title: "About Me"
 format: html
+about: 
+  template: jolla
 ---
+
+## Hobbies
+
+I love to be outside, and spend my free time hiking in the Santa Ynez Mountains, surfing, running, gardening, and playing the guitar. Pictured here is the wildflower garden that I planted in my front yard in Isla Vista. <br> ![](photos/IMG_6335.jpeg){width="800"}
+
+## Cooking/Baking
+
+During the COVID-19 lockdowns, I gained a passion for cooking and baking. I have carried that passion with me to college, and can often be found cooking for my entire house.<br> ![](photos/IMG_5157.jpeg){height="200"} ![](photos/IMG_1211.jpeg){height="200"} ![](photos/IMG_2549.jpeg){height="200"}
+
+## Pets
+
+I have two dogs: Tootsie (half chocolate lab and half german shorthair) and Violet (weimaraner). <br>
+
+![](photos/IMG_1576.jpeg){width=500}
