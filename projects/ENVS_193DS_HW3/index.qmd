@@ -80,7 +80,7 @@ Figure 1: Figure shows mean water usage (gallons) for each day of the week. Mean
 
 #### d. Table Presentation
 
-This creates a table summary for mean water usage.
+This code creates a table summary for mean water usage.
 
 ```{r}
 data_summary <- data_c |> #use cleaned dataframe
